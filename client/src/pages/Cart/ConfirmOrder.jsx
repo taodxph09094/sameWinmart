@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import CheckoutSteps from "../Cart/CheckoutSteps";
 import { useSelector } from "react-redux";
 import "./ConfirmOrder.css";
@@ -18,18 +18,39 @@ const ConfirmOrder = ({ history }) => {
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
   const couponInfo = JSON.parse(sessionStorage.getItem("dataCartCoupon"));
+  const [point, setPoint] = useState("");
+  const [priceDown, setPriceDown] = useState("");
+  const [vip, setVip] = useState("");
+  useEffect(() => {
+    console.log(priceDown);
+    if (user) {
+      setPoint(user.point);
+      if (user.point > 100000 || user.point == 100000) {
+        setVip("VIP");
+        setPriceDown(0.05);
+      } else if (user.point > 500000 || user.point == 500000) {
+        setVip("SVIP");
+        setPriceDown(0.1);
+      }
+    }
+  });
+
   const subtotal = cartItems.reduce(
     (acc, item) =>
       acc +
       item.quantity * item.price -
+      // item.quantity * item.price * priceDown -
       (item.price * item.promotion) / 100 -
       couponInfo.coupon,
     0
   );
 
   const shippingCharges = subtotal > 20000000 ? 0 : 30000;
-  const totalPrice = decimalNumber((subtotal + shippingCharges) / 23000, 2);
-  const priceVND = subtotal + shippingCharges;
+  const totalPrice = decimalNumber(
+    (subtotal - subtotal * priceDown + shippingCharges) / 23000,
+    2
+  );
+  const priceVND = subtotal - subtotal * priceDown + shippingCharges;
   const address = `${shippingInfo.address}, ${shippingInfo.city}, ${shippingInfo.state}, ${shippingInfo.pinCode}, ${shippingInfo.country}`;
 
   const proceedToPayment = () => {
@@ -37,6 +58,7 @@ const ConfirmOrder = ({ history }) => {
       subtotal,
       shippingCharges,
       totalPrice,
+      priceVND,
     };
 
     sessionStorage.setItem("orderInfo", JSON.stringify(data));
@@ -114,7 +136,7 @@ const ConfirmOrder = ({ history }) => {
               <div>
                 <p>Tổng tiền:</p>
                 {/* <span>{subtotal}</span> */}
-                <span>{formatCurrency(subtotal + "", 0, 3, ",", ".")} đ</span>
+                <span>{formatCurrency(priceVND + "", 0, 3, ",", ".")} đ</span>
               </div>
               <div>
                 <p>Phí giao hàng:</p>

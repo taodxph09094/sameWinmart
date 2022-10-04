@@ -16,16 +16,32 @@ import { getCoupon } from "../../actions/couponAction";
 
 const Cart = ({ history }) => {
   const { cartItems } = useSelector((state) => state.cart);
+  const { user } = useSelector((state) => state.user);
   const [coupon, setCoupon] = useState("");
   const [totalPrice, setTotalPrice] = useState("");
   const [valueCoupon, setValueCoupon] = useState("");
   const [shippingPrice, setShippingPrice] = useState("");
+  const [point, setPoint] = useState("");
+  const [priceDown, setPriceDown] = useState("");
+  const [vip, setVip] = useState("");
   // const shippingCharges = subtotal > 20000000 ? 0 : 30000;
   const dispatch = useDispatch();
   const btnAddCoupon = () => {
     // setCoupon(valueCoupon);
   };
-
+  // console.log(vip);
+  useEffect(() => {
+    if (user) {
+      setPoint(user.point);
+      if (user.point > 100000 || user.point == 100000) {
+        setVip("VIP");
+        setPriceDown(totalPrice * 0.05);
+      } else if (user.point > 500000 || user.point == 500000) {
+        setVip("SVIP");
+        setPriceDown(totalPrice * 0.1);
+      }
+    }
+  }, [dispatch, alert, history, user]);
   useEffect(() => {
     // dispatch(getCoupon());
     if (valueCoupon === "GIAMGIA1") {
@@ -210,12 +226,26 @@ const Cart = ({ history }) => {
                         placeholder="Vui lòng nhập mã giảm giá"
                       />
                     </form>
+                    <div className="shoping__checkout">
+                      <p>
+                        Với tài khoản có cấp bậc VIP sẽ được giảm 5% giá trị sản
+                        phẩm, cấp bậc SVIP sẽ được giảm 10% giá trị sản phẩm.
+                      </p>
+                      <p>
+                        Điểm cấp bậc tài khoản được tính bằng 1% tổng giá trị
+                        đơn hàng bạn mua. Tích đủ 1000 điểm sẽ đạt cấp bậc VIP,
+                        5000 điểm đạt cấp bậc SVIP
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
               <div className="col-lg-6">
                 <div className="shoping__checkout">
                   <h5>Hóa đơn</h5>
+                  {point == 0
+                    ? "Tài khoản không được hưởng ưu đãi giảm giá riêng biệt"
+                    : `Tài khoản của bạn đang là ${vip}`}
                   <p>
                     Với mỗi hóa đơn có trị giá lớn hơn 20,000,000 đ sẽ được miễn
                     phí giao hàng
@@ -223,42 +253,18 @@ const Cart = ({ history }) => {
                   <ul>
                     <li>
                       TIền ship{" "}
-                      <span>
-                        {formatCurrency(
-                          `${
-                            // cartItems.reduce(
-                            //   (acc, item) =>
-                            //     acc +
-                            //     item.quantity * item.price -
-                            //     (item.price * item.promotion) / 100,
-                            //   0
-                            // ) > 20000000
-                            //   ? 0
-                            //   : 30000
-                            shippingPrice
-                          }`
-                        )}{" "}
-                        đ
-                      </span>
+                      <span>{formatCurrency(`${shippingPrice}`)} đ</span>
                     </li>
                     <li>
-                      Mã giảm giá{" "}
-                      <span>
-                        {valueCoupon}
-                        {/* {formatCurrency(coupon + "", 0, 3, ",", ".") + " đ"} */}
-                      </span>
+                      Mã giảm giá <span>{valueCoupon}</span>
                     </li>
                     <li>
                       Tổng tiền{" "}
                       <span>
-                        {/* {totalPrice > coupon
-                          ? formatCurrency(
-                              `${totalPrice + shippingPrice}`
-                            )
-                          : formatCurrency(
-                              `${totalPrice + shippingPrice}`
-                            )}{" "} */}
-                        {formatCurrency(`${totalPrice + shippingPrice}`)} đ
+                        {formatCurrency(
+                          `${totalPrice + shippingPrice - priceDown}`
+                        )}{" "}
+                        đ
                       </span>
                     </li>
                   </ul>

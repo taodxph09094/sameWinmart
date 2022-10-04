@@ -35,10 +35,11 @@ const UserUpdate = ({ history, match }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
+  const [point, setPoint] = useState();
   const [address, setAddress] = useState("");
   const [role, setRole] = useState("");
   const [imagesPreview, setImagesPreview] = useState([]);
-  const permission = ["Admin", "Manager", "User"];
+  const permission = ["admin", "manager", "user"];
   const userId = match.params.id;
   useEffect(() => {
     if (user && user._id !== userId) {
@@ -49,6 +50,7 @@ const UserUpdate = ({ history, match }) => {
       setRole(user.role);
       setPassword(user.password);
       setPhone(user.phone);
+      setPoint(user.point);
       setAddress(user.address);
     }
     if (error) {
@@ -75,6 +77,7 @@ const UserUpdate = ({ history, match }) => {
     myForm.set("password", password);
     myForm.set("role", role);
     myForm.set("phone", phone);
+    myForm.set("point", point);
     myForm.set("address", address);
     dispatch(updateUser(userId, myForm));
   };
@@ -98,10 +101,10 @@ const UserUpdate = ({ history, match }) => {
                       <Form.Group>
                         <label>Họ và tên</label>
                         <Form.Control
-                          // defaultValue={name}
+                          defaultValue={name}
                           //   disabled
                           required
-                          placeholder={name}
+                          // placeholder={name}
                           type="text"
                           onChange={(e) => setName(e.target.value)}
                         ></Form.Control>
@@ -111,7 +114,8 @@ const UserUpdate = ({ history, match }) => {
                       <Form.Group>
                         <label htmlFor="exampleInputEmail1">Email</label>
                         <Form.Control
-                          placeholder={email}
+                          defaultValue={email}
+                          // placeholder={email}
                           required
                           type="email"
                           onChange={(e) => setEmail(e.target.value)}
@@ -119,39 +123,14 @@ const UserUpdate = ({ history, match }) => {
                       </Form.Group>
                     </Col>
                   </Row>
-                  <Row>
-                    <Col className="pr-1" md="6">
-                      <Form.Group>
-                        <label>Mật khẩu</label>
-                        <Form.Control
-                          //   defaultValue="Mike"
-                          required
-                          placeholder={password}
-                          type="password"
-                          onChange={(e) => setPassword(e.target.value)}
-                        ></Form.Control>
-                      </Form.Group>
-                    </Col>
-                    <Col className="pl-1" md="6">
-                      <Form.Group>
-                        <label>Nhập lại mật khẩu</label>
-                        <Form.Control
-                          //   defaultValue="Andrew"
-                          placeholder={password}
-                          type="password"
-                          required
-                          //   onChange={(e) => setPassword(e.target.value)}
-                        ></Form.Control>
-                      </Form.Group>
-                    </Col>
-                  </Row>
+
                   <Row>
                     <Col md="12">
                       <Form.Group>
                         <label>Địa chỉ hiện tại</label>
                         <Form.Control
                           required
-                          //   defaultValue="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"
+                          defaultValue={address}
                           placeholder={address}
                           type="text"
                           onChange={(e) => setAddress(e.target.value)}
@@ -165,7 +144,7 @@ const UserUpdate = ({ history, match }) => {
                         <label>Số điện thoại</label>
                         <Form.Control
                           required
-                          //   defaultValue="Mike"
+                          defaultValue={phone}
                           placeholder={phone}
                           type="number"
                           onChange={(e) => setPhone(e.target.value)}
@@ -185,7 +164,7 @@ const UserUpdate = ({ history, match }) => {
                             value={role}
                             onChange={(e) => setRole(e.target.value)}
                           >
-                            Chọn quyền
+                            {role}
                           </option>
                           {permission.map((cate) => (
                             <option key={cate} value={cate}>
@@ -193,6 +172,17 @@ const UserUpdate = ({ history, match }) => {
                             </option>
                           ))}
                         </Form.Select>
+                      </Form.Group>
+                    </Col>
+                    <Col className="px-1" md="4">
+                      <Form.Group>
+                        <label>Điểm thưởng</label>
+                        <Form.Control
+                          // required
+                          defaultValue={point}
+                          // type="number"
+                          onChange={(e) => setPoint(e.target.value)}
+                        ></Form.Control>
                       </Form.Group>
                     </Col>
                   </Row>

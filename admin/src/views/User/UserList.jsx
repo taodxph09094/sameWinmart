@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useAlert } from "react-alert";
 import { DataGrid } from "@material-ui/data-grid";
 import Table from "react-bootstrap/Table";
@@ -14,7 +14,9 @@ import "./style.css";
 const UserList = ({ history }) => {
   const dispatch = useDispatch();
   const alert = useAlert();
+  const [vip, setVip] = useState("");
   const { error, users } = useSelector((state) => state.allUsers);
+
   const {
     error: deleteError,
     isDeleted,
@@ -75,6 +77,20 @@ const UserList = ({ history }) => {
       align: "center",
     },
     {
+      field: "pointP",
+      headerName: "Điểm thưởng",
+      headerAlign: "center",
+      flex: 0.5,
+      align: "center",
+    },
+    {
+      field: "point",
+      headerName: "Quyền lợi",
+      headerAlign: "center",
+      flex: 0.5,
+      align: "center",
+    },
+    {
       field: "role",
       headerName: "Quyền",
       type: "number",
@@ -130,6 +146,15 @@ const UserList = ({ history }) => {
         role: item.role,
         email: item.email,
         name: item.name,
+        pointP: item.point,
+        point:
+          item.point == 0
+            ? "Không"
+            : item.point > 100000 || item.point == 100000
+            ? item.point > 500000 || item.point == 500000
+              ? "SVIP"
+              : "VIP"
+            : "Không",
         phone: item.phone,
       });
     });
