@@ -46,17 +46,23 @@ const CreateProduct = ({ history }) => {
   }, [dispatch, alert, history]);
 
   const categories = [
-    "Điện thoại",
-    "Máy tính bản",
-    "Đồng hồ",
-    "Tai nghe",
-    "Phụ kiện",
-    "Laptop",
+    "Hàng tươi giá tốt",
+    "Đang khuyến mãi",
+    "Rau - củ",
+    "Trái cây",
+    "Thịt - Trứng - Hải sản",
+    "Thực phẩm chế biến",
+    "Thực phẩm đông lạnh",
+    "Thực phẩm khô - gia vị",
+    "Bánh kẹo - Đồ ăn vặt",
+    "Sữa - Sản phẩm từ sữa",
+    "Đồ uống giải khát",
   ];
   // const suppliers = brand?.map((item) => (
+  //   // console.log(item.name + "hi")
   //   <option key={item.id}>{item?.name}</option>
   // ));
-  // console.log(suppliers + "hi");
+
   useEffect(() => {
     if (error) {
       alert.error(error);
@@ -139,11 +145,11 @@ const CreateProduct = ({ history }) => {
                     </Col>
                     <Col className="pr-1" md="3">
                       <Form.Group>
-                        <label>Khuyến mãi ( % )</label>
+                        <label>Giảm giá( % )</label>
                         <Form.Control
                           // defaultValue={name}
                           value={promotion}
-                          placeholder="Nhập % khuyến mãi"
+                          placeholder="Nhập % giảm giá"
                           type="text"
                           onChange={(e) => setPromotion(e.target.value)}
                         ></Form.Control>
@@ -196,7 +202,7 @@ const CreateProduct = ({ history }) => {
                           aria-label="Default select example"
                           onChange={(e) => setCategory(e.target.value)}
                         >
-                          <option value="">Chọn thể loại</option>
+                          <option value="">Chọn loại</option>
                           {categories.map((cate) => (
                             <option key={cate} value={cate}>
                               {cate}
@@ -214,9 +220,9 @@ const CreateProduct = ({ history }) => {
                           onChange={(e) => setSupplier(e.target.value)}
                         >
                           <option value="">Chọn nhà cung cấp</option>
-                          {brand?.map((item) => (
-                            <option key={item} value={item}>
-                              {item?.name}
+                          {brand?.map((sup) => (
+                            <option key={sup} value={sup}>
+                              {sup?.name}
                             </option>
                           ))}
                         </Form.Select>
@@ -234,10 +240,10 @@ const CreateProduct = ({ history }) => {
                       </Form.Group>
                     </Col>
                   </Row>
-                  <Row>
+                  {/* <Row>
                     <Col md="12">
                       <Form.Group>
-                        <label>Thông tin máy</label>
+                        <label>Thông tin</label>
 
                         <CKEditor
                           cols="80"
@@ -258,7 +264,7 @@ const CreateProduct = ({ history }) => {
                         />
                       </Form.Group>
                     </Col>
-                  </Row>
+                  </Row> */}
                   <Row>
                     <Col md="12">
                       <Form.Group>

@@ -35,6 +35,7 @@ const UpdateProduct = ({ history, match }) => {
     isUpdated,
   } = useSelector((state) => state.product);
   const { brand } = useSelector((state) => state.allBrand);
+  console.log(brand?.name);
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
@@ -43,7 +44,7 @@ const UpdateProduct = ({ history, match }) => {
   const [category, setCategory] = useState("");
   const [productLine, setProductLine] = useState("");
   const [company, setCompany] = useState("");
-  const [supplier, setSupplier] = useState([]);
+  const [supplier, setSupplier] = useState("");
   const [Stock, setStock] = useState();
   const [images, setImages] = useState([]);
   const [oldImages, setOldImages] = useState([]);
@@ -52,13 +53,28 @@ const UpdateProduct = ({ history, match }) => {
     dispatch(getBrand());
   }, [dispatch, alert, history]);
   const categories = [
-    "Điện thoại",
-    "Máy tính bản",
-    "Đồng hồ",
-    "Tai nghe",
-    "Phụ kiện",
-    "Laptop",
+    "Hàng tươi giá tốt",
+    "Đang khuyến mãi",
+    "Rau - củ",
+    "Trái cây",
+    "Thịt - Trứng - Hải sản",
+    "Thực phẩm chế biến",
+    "Thực phẩm đông lạnh",
+    "Thực phẩm khô - gia vị",
+    "Bánh kẹo - Đồ ăn vặt",
+    "Sữa - Sản phẩm từ sữa",
+    "Đồ uống giải khát",
   ];
+  const rows = [];
+  console.log(rows);
+  brand &&
+    brand.forEach((item) => {
+      // setPrice(item.price);
+      rows.push({
+        supName: item.name,
+      });
+      // console.log(supName);
+    });
   const productId = match.params.id;
   useEffect(() => {
     if (product && product._id !== productId) {
@@ -185,11 +201,11 @@ const UpdateProduct = ({ history, match }) => {
                     </Col>
                     <Col className="pr-1" md="3">
                       <Form.Group>
-                        <label>Khuyến mãi ( % )</label>
+                        <label>Giảm giá ( % )</label>
                         <Form.Control
                           // defaultValue={name}
                           defaultValue={promotion}
-                          placeholder="Nhập % khuyến mãi"
+                          placeholder="Nhập % giảm giá"
                           type="text"
                           onChange={(e) => setPromotion(e.target.value)}
                         ></Form.Control>
@@ -243,7 +259,7 @@ const UpdateProduct = ({ history, match }) => {
                           aria-label="Default select example"
                           onChange={(e) => setCategory(e.target.value)}
                         >
-                          <option value="">Chọn thể loại</option>
+                          <option value="">{category}</option>
                           {categories.map((cate) => (
                             <option key={cate} value={cate}>
                               {cate}
@@ -259,10 +275,10 @@ const UpdateProduct = ({ history, match }) => {
                           aria-label="Default select example"
                           onChange={(e) => setSupplier(e.target.value)}
                         >
-                          <option value="">Chọn nhà cung cấp</option>
-                          {brand?.map((item) => (
+                          <option value="">{supplier}</option>
+                          {rows.map((item) => (
                             <option key={item} value={item}>
-                              {item?.name}
+                              {item.supName}
                             </option>
                           ))}
                         </Form.Select>
@@ -280,32 +296,7 @@ const UpdateProduct = ({ history, match }) => {
                       </Form.Group>
                     </Col>
                   </Row>
-                  <Row>
-                    <Col md="12">
-                      <Form.Group>
-                        <label>Thông tin máy</label>
-                        {/* <h5>{info}</h5 */}
-                        <CKEditor
-                          cols="80"
-                          defaultValue={info}
-                          //   rows="5"
-                          editor={ClassicEditor}
-                          data={info}
-                          onChange={(event, editor) => {
-                            const data = editor.getData();
-                            setInfo(data);
-                            console.log({ event, editor, data });
-                          }}
-                          onBlur={(event, editor) => {
-                            console.log("Blur.", editor);
-                          }}
-                          onFocus={(event, editor) => {
-                            console.log("Focus.", editor);
-                          }}
-                        />
-                      </Form.Group>
-                    </Col>
-                  </Row>
+                  <Row></Row>
                   <Row>
                     <Col md="12">
                       <Form.Group>

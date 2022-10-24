@@ -15,7 +15,11 @@ const Menu = ({ user }) => {
           <div className="col-lg-3">
             <div className="header__logo">
               <a href="./">
-                <img src="img/logo.png" alt="" />
+                <img
+                  // className="logoSrc"
+                  src="https://scontent.fhan17-1.fna.fbcdn.net/v/t1.15752-9/308006485_3420605758172135_2954199013677683100_n.png?_nc_cat=102&ccb=1-7&_nc_sid=ae9488&_nc_ohc=r6KH4tAmq64AX9PwnY3&tn=3mYoT_b2B_0QA-bD&_nc_ht=scontent.fhan17-1.fna&oh=03_AVLFlJ1e4IGnunIYKSxr6LhSdDaw6s9TfVdBXlgPRp6X_Q&oe=63633057"
+                  alt=""
+                />
               </a>
             </div>
           </div>

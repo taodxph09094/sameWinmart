@@ -5,7 +5,7 @@ const Banner = () => {
     <div
       className="hero__item set-bg "
       style={{
-        backgroundImage: `url("https://thietkehaithanh.com/wp-content/uploads/2019/06/huong-dan-thiet-ke-banner-dien-thoai-bang-photoshop.jpg")`,
+        backgroundImage: `url("https://file.hstatic.net/200000394141/file/-cap-thuc-pham-sach-organic-online-uy-tin-chat-luong-gia-tot-tai-tphcm_a2325157fdbe44b9a4552e309c039475_1024x1024.jpg")`,
       }}
     >
       {/* <div className="hero__text">

@@ -8,7 +8,7 @@ const BannerSmall = () => {
           <div className="col-lg-6 col-md-6 col-sm-6">
             <div className="banner__pic">
               <img
-                src="https://cdn2.cellphones.com.vn/690x300/https://dashboard.cellphones.com.vn/storage/Fold3-3699-rightbanner.png"
+                src="https://dongnaiquetoi.com/uploads/webps/admin/2021-01/kinh-doanh-thuc-pham-sach-2.webp"
                 alt=""
               />
             </div>
@@ -16,7 +16,7 @@ const BannerSmall = () => {
           <div className="col-lg-6 col-md-6 col-sm-6">
             <div className="banner__pic">
               <img
-                src="https://cdn2.cellphones.com.vn/690x300/https://dashboard.cellphones.com.vn/storage/RightBanner_ipad%20m1%20desk.png"
+                src="https://1.bp.blogspot.com/-_afzfCuNGgE/X2oWx0aN2VI/AAAAAAAAAhc/qr7a0kp02PUfgiItQu3EFHx3-ufd8RPWwCLcBGAsYHQ/w1200-h630-p-k-no-nu/Thu%25CC%259B%25CC%25A3c%2Bpha%25CC%2582%25CC%2589m%2Bsa%25CC%25A3ch%2BHNH.png"
                 alt=""
               />
             </div>

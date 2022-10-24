@@ -79,7 +79,7 @@ const Cart = ({ history }) => {
                 0
               )
             );
-      }, setShippingPrice(cartItems.reduce((acc, item) => acc + item.quantity * item.price - (item.price * item.promotion) / 100, 0) > 20000000 ? 0 : 30000));
+      }, setShippingPrice(cartItems.reduce((acc, item) => acc + item.quantity * item.price - (item.price * item.promotion) / 100, 0) > 2000000 ? 0 : 30000));
   });
   const increaseQuantity = (id, quantity, stock) => {
     const newQty = quantity + 1;
@@ -247,7 +247,7 @@ const Cart = ({ history }) => {
                     ? "Tài khoản không được hưởng ưu đãi giảm giá riêng biệt"
                     : `Tài khoản của bạn đang là ${vip}`}
                   <p>
-                    Với mỗi hóa đơn có trị giá lớn hơn 20,000,000 đ sẽ được miễn
+                    Với mỗi hóa đơn có trị giá lớn hơn 2,000,000 đ sẽ được miễn
                     phí giao hàng
                   </p>
                   <ul>

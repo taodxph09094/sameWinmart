@@ -29,6 +29,11 @@
 /*----------------------------------------*/
 /* Template default CSS
 /*----------------------------------------*/
+.logoSrc{
+	width: 150px;
+	height: 150px;
+	align-items: center	;
+}
 .imageProductLine{
 	width: 100%;
 	height: 100px;
@@ -437,15 +442,22 @@ ol {
 }
 
 .header__logo {
-	padding: 15px 0;
+	padding: 25px 0;
+	/* margin-top: -15px; */
+	/* justify-content:center; */
 }
+.banner__pic{
 
+}
 .header__logo a {
+	/* width: 150px;
+	height: 150px; */
 	display: inline-block;
 }
 
 .header__menu {
-	padding: 24px 0;
+	/* padding: 24px 0; */
+	margin-top: 100px;
 }
 
 .header__menu ul li {
@@ -523,7 +535,8 @@ ol {
 
 .header__cart {
 	text-align: right;
-	padding: 24px 0;
+	/* padding: 24px 0; */
+	margin-top:100px;
 }
 
 .header__cart ul {

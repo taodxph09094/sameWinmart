@@ -50,7 +50,7 @@ export const getBrand = () => async (dispatch) => {
 
     const { data } = await axios.get("/api/v1/admin/brand");
 
-    dispatch({ type: ALL_BRANDS_SUCCESS, payload: data.brand });
+    dispatch({ type: ALL_BRANDS_SUCCESS, payload: data?.brand });
   } catch (error) {
     dispatch({
       type: ALL_BRANDS_FAIL,

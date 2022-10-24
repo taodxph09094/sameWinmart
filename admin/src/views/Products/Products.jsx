@@ -86,6 +86,13 @@ const Products = ({ history }) => {
       headerAlign: "center",
       align: "center",
     },
+    // {
+    //   field: "supplier",
+    //   headerName: "Phân phối",
+    //   flex: 0.5,
+    //   headerAlign: "center",
+    //   align: "center",
+    // },
     {
       field: "actions",
       headerName: "Hành động",
@@ -125,6 +132,7 @@ const Products = ({ history }) => {
         price: item.price - (item.price * item.promotion) / 100,
         stock: item.Stock,
         category: item.category,
+        // supplier: item.supplier,
       });
     });
   // {user.avatar.url}

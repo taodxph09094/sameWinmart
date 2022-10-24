@@ -273,17 +273,6 @@ const ProductDetail = ({ match }) => {
                   </li>
                   <li className="nav-item">
                     <a
-                      className="nav-link "
-                      data-toggle="tab"
-                      href="#tabs-2"
-                      role="tab"
-                      aria-selected="false"
-                    >
-                      Cấu hình chi tiết
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a
                       className="nav-link"
                       data-toggle="tab"
                       href="#tabs-3"

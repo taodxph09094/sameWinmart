@@ -1,21 +1,7 @@
 import React, { useState, Fragment } from "react";
 import Banner from "../Banner/Banner";
-import Search from "../../Product/Search";
 import { Link } from "react-router-dom";
 
-const categories = [
-  "Điện thoại",
-  "Laptop",
-  "Máy tính bảng",
-  "Tai nghe",
-  "Loa",
-  "Đồng hồ",
-  "Phụ kiện",
-  "Màn hình",
-  "PC",
-  "Thu cũ",
-  "Hàng cũ",
-];
 const Sidebar = ({ history, match }) => {
   const [keyword, setKeyword] = useState("");
   const [category, setCategory] = useState("");
@@ -34,58 +20,54 @@ const Sidebar = ({ history, match }) => {
           <div className="col-lg-3">
             <div className="hero__categories">
               <div className="hero__categories__all">
-                <i className="fa fa-bars" />
+                {/* <i className="fa fa-bars" /> */}
                 <Link to="/products">
                   <span>Tất cả sản phẩm</span>
                 </Link>
               </div>
               <ul>
                 <li>
-                  <Link to="#">Điện thoại</Link>
+                  <Link to="#">Hàng tươi giá tốt</Link>
                 </li>
                 <li>
-                  <Link to="#">Laptop</Link>
+                  <Link to="#">Đang khuyến mãi</Link>
                 </li>
                 <li>
-                  <Link to="#">Máy tính bảng</Link>
+                  <Link to="#">Rau - củ</Link>
                 </li>
                 <li>
-                  <Link to="#">Tai nghe</Link>
+                  <Link to="#">Trái cây</Link>
                 </li>
                 <li>
-                  <Link to="#">Loa</Link>
+                  <Link to="#">Thịt - Trứng - Hải sản</Link>
                 </li>
                 <li>
-                  <Link to="#">Đồng hồ</Link>
+                  <Link to="#">Thực phẩm chế biến</Link>
                 </li>
                 <li>
-                  <Link to="#">Phụ kiện</Link>
+                  <Link to="#">Thực phẩm đông lạnh</Link>
                 </li>
                 <li>
-                  <Link to="#">Màn hình</Link>
+                  <Link to="#">Thực phẩm khô - gia vị</Link>
                 </li>
                 <li>
-                  <Link to="#">PC</Link>
+                  <Link to="#">Bánh kẹo - Đồ ăn vặt</Link>
+                </li>
+
+                <li>
+                  <Link to="#">Sữa - Sản phẩm từ sữa</Link>
                 </li>
                 <li>
-                  <Link to="#">Thu cũ</Link>
-                </li>
-                <li>
-                  <Link to="#">Hàng cũ</Link>
+                  <Link to="#">Đồ uống giải khát</Link>
                 </li>
               </ul>
             </div>
           </div>
           <div className="col-lg-9">
             {/* search */}
-            {/* <Search /> */}
             <div className="hero__search">
               <div className="hero__search__form">
                 <form action="#" onSubmit={searchSubmitHandler}>
-                  <div className="hero__search__categories">
-                    Tất cả sản phẩm
-                    <span className="arrow_carrot-down" />
-                  </div>
                   <input
                     type="text"
                     placeholder="Bạn muốn tìm gì ?"

@@ -9,17 +9,17 @@ import Pagination from "react-js-pagination";
 import ProductCard from "../../../pages/Home/ProductCard";
 
 const categories = [
-  "Điện thoại",
-  "Laptop",
-  "Máy tính bảng",
-  "Tai nghe",
-  "Loa",
-  "Đồng hồ",
-  "Phụ kiện",
-  "Màn hình",
-  "PC",
-  "Thu cũ",
-  "Hàng cũ",
+  "Hàng tươi giá tốt",
+  "Đang khuyến mãi",
+  "Rau - củ",
+  "Trái cây",
+  "Thịt - Trứng - Hải sản",
+  "Thực phẩm chế biến",
+  "Thực phẩm đông lạnh",
+  "Thực phẩm khô - gia vị",
+  "Bánh kẹo - Đồ ăn vặt",
+  "Sữa - Sản phẩm từ sữa",
+  "Đồ uống giải khát",
 ];
 const Products = ({ match }) => {
   const dispatch = useDispatch();

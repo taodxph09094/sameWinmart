@@ -6,9 +6,6 @@ import Footer from "./pages/Footer/Footer";
 import Home from "./pages/Home/Home";
 import ProductDetails from "./pages/Product/ProductDetail";
 import Products from "./component/layout/Product/Products";
-// import Products from "./component/Product/Products";
-import Search from "./component/Product/Search";
-// import Search from "./component/layout/Search/Search";
 import LoginSignUp from "./component/User/LoginSignUp";
 import store from "./store";
 import { loadUser } from "./actions/userAction";
@@ -18,7 +15,6 @@ import Profile from "./pages/User/Profile";
 import ProtectedRoute from "./component/Route/ProtectedRoute";
 import UpdateProfile from "./component/User/UpdateProfile";
 import UpdatePassword from "./component/User/UpdatePassword";
-import ForgotPassword from "./component/User/ForgotPassword";
 import ResetPassword from "./component/User/ResetPassword";
 import Cart from "./pages/Cart/Cart";
 import Shipping from "./pages/Cart/Shipping";
@@ -43,6 +39,8 @@ import OrderDetailSys from "./pages/Order/OrderDetailSys";
 import MyOrderSys from "./pages/Order/MyOrderSys";
 import News from "./pages/News/News";
 import NewFeedDetails from "./pages/News/NewFeedDetails";
+import Search from "./component/layout/Search/Search";
+import ForgotPassword from "./component/User/ForgotPassword";
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
 
